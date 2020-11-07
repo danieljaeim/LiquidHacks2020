@@ -35,7 +35,7 @@ class App extends React.Component {
     let items = [];
     let newChampObject = {...champdata[champName], items }
     //gonna have to add 'currentstats' key to newChampObject here
-    this.setState(st => ({championList: [...st.championList, {...champdata[champName]}]}))
+    this.setState(st => ({championList: [...st.championList, newChampObject]}))
   }
 
   /* Takes in a champion object, and a number and
@@ -66,7 +66,6 @@ class App extends React.Component {
     */
     return;
   }
-
 
   render() {
     const { championList } = this.state;
