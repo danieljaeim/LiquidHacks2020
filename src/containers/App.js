@@ -31,7 +31,7 @@ class App extends React.Component {
 
     return (
       <>
-        {...championList.map(c => {
+        {championList.map(c =>
           <Champion>
             <Box className={"abilities-container"}>
               <Abilities />
@@ -43,7 +43,7 @@ class App extends React.Component {
               <Items />
             </Box>
           </Champion>
-        })}
+        )}
       </>
     )
   }
