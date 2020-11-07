@@ -8,14 +8,15 @@ import '../css/App.css';
 import champdata from '../data/champions.json'
 import itemdata from '../data/items.json'
 
-// IMPORTING COMPONENTS
+// IMPORTING CONTAINERS
 import Champion from './Champion';
+import Searchbar from './Searchbar';
 import Items from './Items';
 import Stats from './Stats'
 import Abilities from './Abilities';
 import Runes from './Runes';
 
-//IMPORT CONTAINERS
+//IMPORT DUMMY COMPONENTS
 import Box from '../components/Box';
 
 class App extends React.Component {
@@ -25,14 +26,27 @@ class App extends React.Component {
     itemsList: []
   }
 
-  render() {
+  /* Takes in a champion object, and a number and
+     and returns the champion object with its stats changed by level
+  */
 
+  scaleChampionByLevel = (champObj, level) => {
+    /* 
+      CODE HERE
+    */
+    return;
+  }
+  
+
+
+  render() {
     const { championList } = this.state;
 
     return (
       <>
+      <Searchbar />
         {championList.map(c =>
-          <Champion>
+          <Champion {...c}>
             <Box className={"abilities-container"}>
               <Abilities />
             </Box>
