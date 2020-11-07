@@ -1,9 +1,8 @@
-
-
 .champion-container {
     position: relative;
     display: inline-block;
-    width: 100%;
+    width: 65%;
+    left: 16.5%;
     height: 100%;
     border: 2px black solid;
 }
