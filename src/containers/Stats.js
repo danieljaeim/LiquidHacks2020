@@ -16,7 +16,7 @@ class Stats extends React.Component {
         newroles.push((roles[role].charAt(0).toUpperCase() + roles[role].slice(1)))
     }
     return newroles.join(" ");
-    }
+    }   
 
     render() {
         return(
@@ -26,7 +26,7 @@ class Stats extends React.Component {
             Roles: { this.getRoles() }
         </div>
         <div className="Health" >
-            <img src="https://i.imgur.com/phYfxhw.png" width="15px" height="15px" />
+            <img src="https://i.imgur.com/mLMIg9k.png" width="15px" height="15px" />
             Health: {this.state.currentStats.health.flat}
         </div>
         <div className="HealthRegen" >
