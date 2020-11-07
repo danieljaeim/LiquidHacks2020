@@ -2,7 +2,7 @@
 import React from 'react';
 
 // STYLESHEETS
-import '../css/ChampionBox.css';
+import '../css/Champion.css';
 
 class Champion extends React.Component {
     constructor(props) {
@@ -15,6 +15,7 @@ class Champion extends React.Component {
 
         return(
             <div className="champion-container">
+                <div> {this.props.name} </div>
                 {children}
             </div>
         )

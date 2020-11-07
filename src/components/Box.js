@@ -2,7 +2,7 @@
 import React, { Children } from 'react';
 
 // STYLESHEETS
-import '../css/ChampionBox.css';
+import '../css/Champion.css';
 
 class Box extends React.Component {
     constructor(props) {

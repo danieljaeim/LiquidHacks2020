@@ -2,7 +2,7 @@
 import React from 'react';
 
 // STYLESHEETS
-import '../css/RunesBox.css';
+import '../css/Runes.css';
 
 class Runes extends React.Component {
     constructor(props) {
