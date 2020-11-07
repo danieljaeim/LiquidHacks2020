@@ -1,0 +1,36 @@
+.items-container {
+    position: absolute;
+    display: flex;
+    width: 35%;
+    height: 35%;
+    border: 1px black solid;
+    bottom: 5%;
+    right: 8%;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* ITEM DROPDOWN SEARCH */
+
+.dropdown-items {
+    position: absolute;
+    width: 50%;
+    top: -30%;
+    left: 0;
+}
+
+
+/* ITEMS SLOT CSS */
+
+.itemslot {
+    position: relative;
+    height: 50%;
+    width: 33%;
+    border: 1px black solid;
+}
+
+.add-item-option {
+    position: relative;
+    text-align: center;
+}
