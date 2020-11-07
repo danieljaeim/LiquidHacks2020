@@ -36,9 +36,18 @@ class App extends React.Component {
   }
 
   /* Takes in a champion object, and a number and
-     and returns the champion object with its stats changed by level
+     and returns the champion object with its stats changed by level,
+     then update the relevant champion in the championList
+
+     Return a new copy of the statsObj
+
+     // return {
+       health: 760
+       mana: 350
+       ...
+     }
   */
-  scaleChampionByLevel = (champObj, level) => {
+  scaleChampionByLevel = (statsObj, level) => {
     /* 
       CODE HERE
     */
