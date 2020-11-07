@@ -4,9 +4,10 @@ import React from 'react';
 import '../css/Abilities.css';
 
 class Abilities extends React.Component {
-    constructor(props) {
-        super(props)
-    }
+    state = {}
+
+    
+
 
     // Reads an ability's effects and parses damage, and its type 
     // Returns a number for the ability, based on its level, and the champion's base stats + item stats
@@ -29,6 +30,8 @@ class Abilities extends React.Component {
         let abilityArr = Object.values(abilities).map(a => {
             return a[0]
         })
+
+        console.log(abilityArr)
 
         return (
             <>

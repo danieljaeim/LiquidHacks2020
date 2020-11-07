@@ -47,10 +47,19 @@ class App extends React.Component {
   scaleChampionByLevel = (champName, level) => {
     let newChampObject = { ...champdata[champName] }
     let currentStats = {};
+    let relevantStats = ['health', 'healthRegen', 'mana', 'manaRegen', 
+    'armor', 'magicResistance', 'attackDamage', 'movespeed', 'attackSpeed', 'attackRange']
     for (let key of Object.keys(newChampObject.stats)) {
+      if (relevantStats.indexOf(key) < 0) continue;
       currentStats[key] = newChampObject.stats[key].flat
+      currentStats[key] += +newChampObject.stats[key].perLevel * level
     }
+    currentStats.level = level;
+    currentStats.lifesteal = currentStats.lifesteal ? currentStats.lifesteal : 0
+    currentStats.abilitypower = currentStats.abilitypower ? currentStats.abilitypower : 0
+
     newChampObject.currentStats = currentStats;
+    
     return newChampObject
   }
 
