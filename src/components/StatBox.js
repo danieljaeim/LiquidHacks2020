@@ -1,6 +1,10 @@
+// REGULAR IMPORTS
 import React from 'react';
 
-class StatsBox extends React.Component {
+// STYLESHEETS
+import '../css/StatBox.css';
+
+class StatBox extends React.Component {
     constructor(props) {
         super(props)
     }
@@ -10,4 +14,4 @@ class StatsBox extends React.Component {
     }
 }
 
-export default StatsBox;
+export default StatBox;

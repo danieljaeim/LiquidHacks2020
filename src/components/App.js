@@ -1,5 +1,5 @@
 // REGULAR IMPORTS
-import React, {Component} from 'react';
+import React from 'react';
 
 // STYLESHEETS
 import '../css/App.css';
