@@ -1,0 +1,16 @@
+.champions-modal {
+    position: relative;
+    width: 900px;
+    height: auto;
+    border: 1px black solid;
+}
+
+.champ-icon {
+    position: relative;
+    width: 45px;
+    height: 45px;
+}
+
+.champ-icon:hover {
+    opacity: 0.5;
+}
