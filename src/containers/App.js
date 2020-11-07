@@ -22,23 +22,33 @@ import Box from '../components/Box';
 class App extends React.Component {
 
   state = {
-    championList: [],
-    itemsList: []
+    championList: [], // we have this list of champion instances...
   }
 
   findKeyInJSON(name, obj) {
     return obj[name];
   }
 
-
   addChampionToList = (champName) => {
+    if (this.state.championList.some(c => c.name == champName)) return;
+
+    let items = [];
+    let newChampObject = {...champdata[champName], items }
+    //gonna have to add 'currentstats' key to newChampObject here
     this.setState(st => ({championList: [...st.championList, {...champdata[champName]}]}))
   }
 
   /* Takes in a champion object, and a number and
-     and returns the champion object with its stats changed by level
+     and returns the champion object with its stats changed by level,
+     then update the relevant champion in the championList
+     Return a new copy of the statsObj
+     // return {
+       health: 760
+       mana: 350
+       ...
+     }
   */
-  scaleChampionByLevel = (champObj, level) => {
+  scaleChampionByLevel = (statsObj, level) => {
     /* 
       CODE HERE
     */
@@ -58,7 +68,6 @@ class App extends React.Component {
 
   render() {
     const { championList } = this.state;
-
     return (
       <>
       <Searchbar 
@@ -68,10 +77,10 @@ class App extends React.Component {
         {championList.map(c =>
           <Champion {...c}>
             <Box className={"abilities-container"}>
-              <Abilities />
+              <Abilities {...c}/>
             </Box>
             <Box className={"stats-container"}>
-              <Stats />
+              <Stats/>
             </Box>
             <Box className={"items-container"}>
               <Items />
