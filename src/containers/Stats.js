@@ -31,7 +31,7 @@ class Stats extends React.Component {
     }
     
     handleDropdownChange = (event, data) => {
-        this.setState({level: data.value})
+        this.setState({currentLevel: data.value})
     }
 
     getRoles() {
