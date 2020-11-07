@@ -1,13 +1,13 @@
 import React from 'react';
 
-class AbilitiesBox extends React.Component {
+class Abilities extends React.Component {
     constructor(props) {
         super(props)
     }
 
     render() {
-        
+        return(<></>)
     }
 }
 
-export default AbilitiesBox;
+export default Abilities;

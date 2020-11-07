@@ -2,16 +2,16 @@
 import React from 'react';
 
 // STYLESHEETS
-import '../css/ChampionBox.css';
+import '../css/ItemsBox.css';
 
-class ChampionBox extends React.Component {
+class Items extends React.Component {
     constructor(props) {
         super(props)
     }
 
     render() {
-
+        return(<></>)
     }
 }
 
-export default ChampionBox;
+export default Items;

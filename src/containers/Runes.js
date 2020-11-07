@@ -2,16 +2,16 @@
 import React from 'react';
 
 // STYLESHEETS
-import '../css/StatBox.css';
+import '../css/RunesBox.css';
 
-class StatBox extends React.Component {
+class Runes extends React.Component {
     constructor(props) {
         super(props)
     }
 
     render() {
-        
+        return(<></>)
     }
 }
 
-export default StatBox;
+export default Runes;
