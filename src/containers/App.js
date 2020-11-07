@@ -5,6 +5,8 @@ import React from 'react';
 import '../css/App.css';
 
 // STATIC INFO JSON FILES
+import champdata from '../data/champions.json'
+import itemdata from '../data/items.json'
 
 // IMPORTING CONTAINERS
 import Champion from './Champion';
@@ -13,37 +15,40 @@ import Items from './Items';
 import Stats from './Stats'
 import Abilities from './Abilities';
 import Runes from './Runes';
-import champdata from '../data/champions.json';
-import itemdata from '../data/items.json';
 
 //IMPORT DUMMY COMPONENTS
 import Box from '../components/Box';
 
 class App extends React.Component {
-  
+
   state = {
-<<<<<<< HEAD
-    championList: champdata,
-    itemsList: itemdata
-  } 
-=======
-    championList: [],
-    itemsList: []
+    championList: [], // we have this list of champion instances...
   }
 
   findKeyInJSON(name, obj) {
     return obj[name];
   }
 
-
   addChampionToList = (champName) => {
+    if (this.state.championList.some(c => c.name == champName)) return;
+
+    let items = [];
+    let newChampObject = {...champdata[champName], items }
+    //gonna have to add 'currentstats' key to newChampObject here
     this.setState(st => ({championList: [...st.championList, {...champdata[champName]}]}))
   }
 
   /* Takes in a champion object, and a number and
-     and returns the champion object with its stats changed by level
+     and returns the champion object with its stats changed by level,
+     then update the relevant champion in the championList
+     Return a new copy of the statsObj
+     // return {
+       health: 760
+       mana: 350
+       ...
+     }
   */
-  scaleChampionByLevel = (champObj, level) => {
+  scaleChampionByLevel = (statsObj, level) => {
     /* 
       CODE HERE
     */
@@ -61,10 +66,8 @@ class App extends React.Component {
   }
 
 
->>>>>>> 5d4f11d8c71d4509f57a12ebc4e1cd428e84f2b5
   render() {
     const { championList } = this.state;
-
     return (
       <>
       <Searchbar 
@@ -74,10 +77,10 @@ class App extends React.Component {
         {championList.map(c =>
           <Champion {...c}>
             <Box className={"abilities-container"}>
-              <Abilities />
+              <Abilities {...c}/>
             </Box>
             <Box className={"stats-container"}>
-              <Stats />
+              <Stats/>
             </Box>
             <Box className={"items-container"}>
               <Items />

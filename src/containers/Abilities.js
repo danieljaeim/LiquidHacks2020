@@ -1,7 +1,7 @@
 import React from 'react';
 
 // STYLESHEETS
-import '../css/Champion.css';
+import '../css/Abilities.css';
 
 class Abilities extends React.Component {
     constructor(props) {
@@ -9,7 +9,11 @@ class Abilities extends React.Component {
     }
 
     render() {
-        return(<></>)
+        return (
+            <>
+                
+            </>
+        )
     }
 }
 
