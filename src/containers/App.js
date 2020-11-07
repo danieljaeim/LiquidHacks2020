@@ -21,24 +21,29 @@ import Box from '../components/Box';
 class App extends React.Component {
 
   state = {
-    championList: champdata,
-    itemsList: itemdata
+    championList: [],
+    itemsList: []
   }
 
   render() {
+
+    const { championList } = this.state;
+
     return (
       <>
-        <Champion>
-          <Box className={"abilities-container"}>
-            <Abilities />
-          </Box>
-          <Box className={"stats-container"}>
-            <Stats />
-          </Box>
-          <Box className={"items-container"}>
-            <Items />
-          </Box>
-        </Champion>
+        {championList.map(c =>
+          <Champion>
+            <Box className={"abilities-container"}>
+              <Abilities />
+            </Box>
+            <Box className={"stats-container"}>
+              <Stats />
+            </Box>
+            <Box className={"items-container"}>
+              <Items />
+            </Box>
+          </Champion>
+        )}
       </>
     )
   }
