@@ -36,6 +36,16 @@ class App extends React.Component {
     */
     return;
   }
+
+  /* Takes in a champion object, and an itemsObject and returns a champion Object with
+     stats changed, based on the item
+  */
+  applyItemToChampion = (itemObj, champObj) => {
+    /* 
+      CODE HERE
+    */
+    return;
+  }
   
 
 
