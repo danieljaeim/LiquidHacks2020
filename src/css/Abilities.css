@@ -1,12 +1,13 @@
 .abilities-container {
-    position: relative;
+    position: absolute;
     display: flex;
-    left: 50%; 
+    width: auto;
+    right: 5%;
     top: 5%;
-    align-items: center;
-    width: 42%;
+    align-items: right;
     height: 100px;
     justify-content: row;
+    border: 1px black solid;
 }
 
 .ability-icon {
