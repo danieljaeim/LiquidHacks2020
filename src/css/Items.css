@@ -1,0 +1,27 @@
+.items-container {
+    position: absolute;
+    display: flex;
+    width: 20%;
+    height: 75%;
+    border: 1px black solid;
+    right: 2.5%;
+    bottom: 5%;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+
+/* ITEMS SLOT CSS */
+
+.itemslot {
+    position: relative;
+    height: 32%;
+    width: 49%;
+    border: 1px black solid;
+}
+
+.add-item-option {
+    position: relative;
+    text-align: center;
+}

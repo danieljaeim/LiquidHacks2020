@@ -1,15 +1,16 @@
 import React from 'react';
 import '../css/Searchbar.css';
+import { Dropdown } from 'semantic-ui-react';
 
 class Searchbar extends React.Component {
 
     state = {
-        searchText: '',
-        iconArr: []
+        championOptions: null
     }
 
     componentDidMount = () => {
-        this.setState({ iconArr: this.returnListOfIcons() })
+        console.log(this.generateListOfChampNames())
+        this.setState({ championOptions: this.generateListOfChampNames() })
     }
 
     searchTextOnChange = e => {
@@ -29,24 +30,37 @@ class Searchbar extends React.Component {
         return retArr;
     }
 
+    /* RETURNS A LIST OF CHAMPION NAMES FOR THE SEARCHBAR */
+    generateListOfChampNames = () => {
+        let { champdata } = this.props;
+        let arr = Object.keys(champdata).map(key => {
+            return { key: key, value: key, image: {src: champdata[key].icon}, text: key }
+        })
+
+        console.log(arr)
+        return arr;
+    }
+
+    handleDropdownChange = (event, data) => {
+        this.props.addChampionToList(data.value)
+    }
+
     render() {
-        const { addChampionToList, champdata } = this.props;
-        const { iconArr } = this.state;
+        const { addChampionToList, generateListOfChampNames } = this.props;
+        const { championOptions } = this.state;
 
         return (
             <>
                 {/* change this for a working searchbar later */}
                 <div className="champions-modal">
-                    {iconArr.map(obj => {
-                        return (
-                            <img onClick={_ => addChampionToList(obj.key)} key={obj.key} className="champ-icon" src={obj.icon} />
-                        )
-                    })}
-                </div>
-                <div className="searchbar-container">
-                    <input className="searchbar"
-                        placeholder="champion"
-                        onChange={e => this.searchTextOnChange(e)} />
+                    <Dropdown
+                        placeholder='Select Champion'
+                        onChange={this.handleDropdownChange}
+                        fluid
+                        search
+                        selection
+                        options={championOptions}
+                    />
                 </div>
             </>
         );

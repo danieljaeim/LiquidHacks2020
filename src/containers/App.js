@@ -39,15 +39,10 @@ class App extends React.Component {
   addChampionToList = (champName) => {
     if (this.state.championList.some(c => c.name == champName)) return;
 
-    let items = [];
-    let newChampObject = {...champdata[champName], items }
-    //gonna have to add 'currentstats' key to newChampObject here
-    let currentStats = {};
-    for (let key of Object.keys(newChampObject.stats)) {
-      currentStats[key] = newChampObject.stats[key].flat
-    }
-    newChampObject.currentStats = currentStats;
-    this.setState(st => ({championList: [...st.championList, newChampObject]}))
+    console.log(champName)
+    let newChampObject = this.scaleChampionByLevel(champName, 1);
+    newChampObject.items = new Array(6).fill(null);
+    this.setState(st => ({ championList: [...st.championList, newChampObject] }))
   }
 
   /* Takes in a champion object, and a number and
@@ -56,17 +51,20 @@ class App extends React.Component {
 
      Return a new copy of the statsObj
 
-     // return {
+     // return the object {
        health: 760
        mana: 350
        ...
      }
   */
-  scaleChampionByLevel = (statsObj, level) => {
-    /* 
-      CODE HERE
-    */
-    return;
+  scaleChampionByLevel = (champName, level) => {
+    let newChampObject = { ...champdata[champName] }
+    let currentStats = {};
+    for (let key of Object.keys(newChampObject.stats)) {
+      currentStats[key] = newChampObject.stats[key].flat
+    }
+    newChampObject.currentStats = currentStats;
+    return newChampObject
   }
 
   /* Takes in a champion object, and an itemsObject and returns a champion Object with
@@ -83,23 +81,25 @@ class App extends React.Component {
     const { championList } = this.state;
     return (
       <>
-      <Searchbar 
-        champdata={champdata}
-        addChampionToList={this.addChampionToList}
+        <Searchbar
+          champdata={champdata}
+          addChampionToList={this.addChampionToList}
         />
-        {championList.map(c =>
-          <Champion {...c}>
-            <Box className={"abilities-container"}>
-              <Abilities {...c}/>
-            </Box>
-            <Box className={"stats-container"}>
-              <Stats {...c}/>
-            </Box>
-            <Box className={"items-container"}>
-              <Items />
-            </Box>
-          </Champion>
-        )}
+        <div className="championlist-container">
+          {championList.map(c =>
+            <Champion {...c}>
+              <Box className={"abilities-container"}>
+                <Abilities {...c} />
+              </Box>
+              <Box className={"stats-container"}>
+                <Stats {...c} />
+              </Box>
+              <Box className={"items-container"}>
+                <Items {...c} />
+              </Box>
+            </Champion>
+          )}
+        </div>
       </>
     )
   }

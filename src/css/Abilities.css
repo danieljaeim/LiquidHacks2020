@@ -1,10 +1,10 @@
 .abilities-container {
     position: relative;
     display: flex;
-    float: right;
-    width: 500px;
+    left: 30%;
+    align-items: center;
+    width: 45%;
     height: 100px;
-    border: 1px red solid;
     justify-content: row;
 }
 
@@ -47,8 +47,8 @@
 .tooltiptext {
     visibility: hidden;
     top: 100px;
-    width: 450px;
-    height: 300px;
+    width: 200px;
+    height: 150px;
     background-color:black;
     opacity: 0.5;
     color: black;
@@ -62,4 +62,5 @@
 .tooltip:hover .tooltiptext {
     visibility: visible;
 }
+
 
