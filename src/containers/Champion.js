@@ -14,9 +14,9 @@ class Champion extends React.Component {
         const { children } = this.props;
 
         return(
-            <>
+            <div className="champion-container">
                 {children}
-            </>
+            </div>
         )
     }
 }
