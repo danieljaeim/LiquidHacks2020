@@ -30,6 +30,11 @@ class App extends React.Component {
   }
 
   addChampionToList = (champName) => {
+    if (this.state.championList.some(c => c.name == champName)) return;
+
+    let items = [];
+    let newChampObject = {...champdata[champName], items }
+    //gonna have to add 'currentstats' key to newChampObject here
     this.setState(st => ({championList: [...st.championList, {...champdata[champName]}]}))
   }
 
