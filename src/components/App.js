@@ -10,7 +10,10 @@ import itemdata from '../data/items.json'
 
 class App extends React.Component {
 
-  state = {}
+  state = {
+    championList: champdata,
+    itemsList: itemdata
+  }
 
   render() {
     return <div></div>
