@@ -17,8 +17,6 @@ class Stats extends React.Component {
 
     render() {
 
-        console.log(this.props.currentStats)
-
         return (
             <>
                 <div className="role" >

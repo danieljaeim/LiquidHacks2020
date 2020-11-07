@@ -16,7 +16,7 @@ class Champion extends React.Component {
         return(
             <div className="champion-container">
                 <div className="champ-header">
-                    <span className="champ-portrait"></span>
+                    <img className="champ-portrait" src={this.props.icon}></img>
                     <span className="champ-name"> {this.props.name} </span>
                 </div>
                 {children}

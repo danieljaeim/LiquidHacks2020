@@ -54,8 +54,10 @@ class App extends React.Component {
       currentStats[key] = newChampObject.stats[key].flat
       currentStats[key] += +newChampObject.stats[key].perLevel * level
     }
-
     currentStats.level = level;
+    currentStats.lifesteal = currentStats.lifesteal ? currentStats.lifesteal : 0
+    currentStats.abilitypower = currentStats.abilitypower ? currentStats.abilitypower : 0
+
     newChampObject.currentStats = currentStats;
     
     return newChampObject

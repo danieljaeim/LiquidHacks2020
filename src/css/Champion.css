@@ -6,3 +6,19 @@
     height: 100%;
     border: 2px black solid;
 }
+
+.champ-header {
+    position: absolute;
+    /* border: 1px black solid; */
+    width: 25%;
+    height: 35%;
+    left: 5%;
+    top: 5%;
+}
+
+.champ-name {
+    position: absolute;
+    font-size: 2rem;
+    font-weight: 900;
+    padding: 10px 15px;
+}
