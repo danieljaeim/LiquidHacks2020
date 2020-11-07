@@ -10,6 +10,8 @@ class Stats extends React.Component {
     }
 
     render() {
+        const {currentStats} = this.props;
+        console.log(currentStats)
         return(<></>)
     }
 }
