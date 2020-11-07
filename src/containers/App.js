@@ -29,12 +29,24 @@ class App extends React.Component {
     return obj[name];
   }
 
+  addItemsToChampion = (championName, itemObj) => {
+    let { championList } = this.state;
+    let champObj = championList.find(c => c.name == championName);
+    let champItems = champObj.items;
+
+  }
+
   addChampionToList = (champName) => {
     if (this.state.championList.some(c => c.name == champName)) return;
 
     let items = [];
     let newChampObject = {...champdata[champName], items }
     //gonna have to add 'currentstats' key to newChampObject here
+    let currentStats = {};
+    for (let key of Object.keys(newChampObject.stats)) {
+      currentStats[key] = newChampObject.stats[key].flat
+    }
+    newChampObject.currentStats = currentStats;
     this.setState(st => ({championList: [...st.championList, newChampObject]}))
   }
 
@@ -81,7 +93,7 @@ class App extends React.Component {
               <Abilities {...c}/>
             </Box>
             <Box className={"stats-container"}>
-              <Stats/>
+              <Stats {...c}/>
             </Box>
             <Box className={"items-container"}>
               <Items />

@@ -8,6 +8,21 @@ class Abilities extends React.Component {
         super(props)
     }
 
+    // Reads an ability's effects and parses damage, and its type 
+    // Returns a number for the ability, based on its level, and the champion's base stats + item stats
+    /* KNOWN TYPES OF DAMAGE:
+        Physical Damage
+        Magic Damage
+        Minion Damage
+        Additional Magic Damage
+        Total Single Target Damage
+        Total Mixed Damage
+    */
+    calculateAbilityBasedOnStats = () => {
+        let { effects } = this.props.abilities;
+        console.log(effects)
+    }
+
     render() {
 
         const { abilities, currentstats } = this.props;
@@ -15,16 +30,18 @@ class Abilities extends React.Component {
             return a[0]
         })
 
+        console.log(abilityArr)
+
         return (
             <>
                 {abilityArr.map(a => {
                     return (
-                        <div className="tooltip">
+                        <div key={a.name} className="tooltip">
                             <span className="tooltiptext">
                                 <span className="ability-name">{ a.name }</span>
-                                <span className="ability-description"> {a.blurb} </span>
+                                <span className="ability-description"></span>
                             </span>
-                            <img key={a} className="ability-icon" src={a.icon} />
+                            <img className="ability-icon" src={a.icon} />
                         </div>
                     )
                 })}
