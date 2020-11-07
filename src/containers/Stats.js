@@ -2,7 +2,7 @@
 import React from 'react';
 
 // STYLESHEETS
-import '../css/StatBox.css';
+import '../css/Stats.css';
 
 class Stats extends React.Component {
     constructor(props) {

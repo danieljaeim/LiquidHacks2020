@@ -2,7 +2,7 @@
 import React from 'react';
 
 // STYLESHEETS
-import '../css/ItemsBox.css';
+import '../css/Items.css';
 
 class Items extends React.Component {
     constructor(props) {
