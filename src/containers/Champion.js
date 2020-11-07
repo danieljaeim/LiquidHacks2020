@@ -4,7 +4,7 @@ import React from 'react';
 // STYLESHEETS
 import '../css/ChampionBox.css';
 
-class Champions extends React.Component {
+class Champion extends React.Component {
     constructor(props) {
         super(props)
     }
@@ -21,4 +21,4 @@ class Champions extends React.Component {
     }
 }
 
-export default Champions;
+export default Champion;

@@ -9,7 +9,7 @@ import champdata from '../data/champions.json'
 import itemdata from '../data/items.json'
 
 // IMPORTING COMPONENTS
-import Champions from './Champion';
+import Champion from './Champion';
 import Items from './Items';
 import Stats from './Stats'
 import Abilities from './Abilities';
