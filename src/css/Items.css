@@ -1,14 +1,23 @@
 .items-container {
     position: absolute;
     display: flex;
-    width: 20%;
-    height: 75%;
+    width: 35%;
+    height: 35%;
     border: 1px black solid;
-    right: 2.5%;
     bottom: 5%;
-    flex-direction: row;
+    right: 8%;
+    flex-direction: column;
     align-items: center;
     flex-wrap: wrap;
+}
+
+/* ITEM DROPDOWN SEARCH */
+
+.dropdown-items {
+    position: absolute;
+    width: 50%;
+    top: -30%;
+    left: 0;
 }
 
 
@@ -16,8 +25,8 @@
 
 .itemslot {
     position: relative;
-    height: 32%;
-    width: 49%;
+    height: 50%;
+    width: 33%;
     border: 1px black solid;
 }
 

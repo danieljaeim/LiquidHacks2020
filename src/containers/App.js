@@ -1,5 +1,6 @@
 // REGULAR IMPORTS
 import React from 'react';
+import { Dropdown } from 'semantic-ui-react';
 
 // STYLESHEETS
 import '../css/App.css';
@@ -29,17 +30,15 @@ class App extends React.Component {
     return obj[name];
   }
 
-  addItemsToChampion = (championName, itemObj) => {
+  addItemToChampion = (championName, itemObj) => {
     let { championList } = this.state;
     let champObj = championList.find(c => c.name == championName);
     let champItems = champObj.items;
-
+    champItems.push(itemObj)
   }
 
   addChampionToList = (champName) => {
     if (this.state.championList.some(c => c.name == champName)) return;
-
-    console.log(champName)
     let newChampObject = this.scaleChampionByLevel(champName, 1);
     newChampObject.items = new Array(6).fill(null);
     this.setState(st => ({ championList: [...st.championList, newChampObject] }))
@@ -95,7 +94,10 @@ class App extends React.Component {
                 <Stats {...c} />
               </Box>
               <Box className={"items-container"}>
-                <Items {...c} />
+                <Items
+                  itemdata={itemdata}
+                  addItemToChampion={this.addItemToChampion}
+                  {...c} />
               </Box>
             </Champion>
           )}
