@@ -4,6 +4,19 @@ import React from 'react';
 // STYLESHEETS
 import '../css/Stats.css';
 
+const statToIcon = {
+    attackdamage: 'https://i.imgur.com/O6G2qo5.png',
+    health: 'https://i.imgur.com/phYfxhw.png',
+    attackdamage: 'https://i.imgur.com/O6G2qo5.png',
+    attackdamage: 'https://i.imgur.com/O6G2qo5.png',
+    attackdamage: 'https://i.imgur.com/O6G2qo5.png',
+    attackdamage: 'https://i.imgur.com/O6G2qo5.png',
+    attackdamage: 'https://i.imgur.com/O6G2qo5.png',
+    attackdamage: 'https://i.imgur.com/O6G2qo5.png',
+    attackdamage: 'https://i.imgur.com/O6G2qo5.png',
+    attackdamage: 'https://i.imgur.com/O6G2qo5.png',
+}
+
 class Stats extends React.Component {
 
     getRoles() {

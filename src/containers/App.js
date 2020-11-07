@@ -51,8 +51,8 @@ class App extends React.Component {
     'armor', 'magicResistance', 'attackDamage', 'movespeed', 'attackSpeed', 'attackRange']
     for (let key of Object.keys(newChampObject.stats)) {
       if (relevantStats.indexOf(key) < 0) continue;
-      currentStats[key] = newChampObject.stats[key].flat
-      currentStats[key] += +newChampObject.stats[key].perLevel * level
+      currentStats[key.toLowerCase()] = newChampObject.stats[key].flat
+      currentStats[key.toLowerCase()] += +newChampObject.stats[key].perLevel * level
     }
     currentStats.level = level;
     currentStats.lifesteal = currentStats.lifesteal ? currentStats.lifesteal : 0
