@@ -22,14 +22,12 @@ import Box from '../components/Box';
 class App extends React.Component {
 
   state = {
-    championList: [],
-    itemsList: []
+    championList: [], // we have this list of champion instances...
   }
 
   findKeyInJSON(name, obj) {
     return obj[name];
   }
-
 
   addChampionToList = (champName) => {
     this.setState(st => ({championList: [...st.championList, {...champdata[champName]}]}))
@@ -67,7 +65,6 @@ class App extends React.Component {
 
   render() {
     const { championList } = this.state;
-
     return (
       <>
       <Searchbar 
@@ -77,10 +74,10 @@ class App extends React.Component {
         {championList.map(c =>
           <Champion {...c}>
             <Box className={"abilities-container"}>
-              <Abilities />
+              <Abilities {...c}/>
             </Box>
             <Box className={"stats-container"}>
-              <Stats />
+              <Stats stats={} items={}/>
             </Box>
             <Box className={"items-container"}>
               <Items />

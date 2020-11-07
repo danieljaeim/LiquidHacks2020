@@ -15,7 +15,7 @@ class Champion extends React.Component {
 
         return(
             <div className="champion-container">
-                <div> {this.props.name} </div>
+                <div style={{ position: 'absolute' }}> {this.props.name} </div>
                 {children}
             </div>
         )

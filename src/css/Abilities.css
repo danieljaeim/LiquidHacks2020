@@ -1,0 +1,8 @@
+.abilities-container {
+    position: relative;
+    display: flex;
+    float: right;
+    width: 440px;
+    height: 174px;
+    border: 1px red solid;
+}
