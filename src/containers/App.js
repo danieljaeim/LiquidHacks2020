@@ -77,7 +77,7 @@ class App extends React.Component {
               <Abilities {...c}/>
             </Box>
             <Box className={"stats-container"}>
-              <Stats stats={} items={}/>
+              <Stats/>
             </Box>
             <Box className={"items-container"}>
               <Items />
