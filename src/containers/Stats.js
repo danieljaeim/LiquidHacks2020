@@ -1,6 +1,6 @@
 // REGULAR IMPORTS
-import React from 'react';
-import { Dropdown } from 'semantic-ui-react';
+import React, { useEffect } from 'react';
+import { Dropdown, Transition } from 'semantic-ui-react';
 
 // STYLESHEETS
 import '../css/Stats.css';
@@ -10,6 +10,7 @@ class Stats extends React.Component {
         levelOptions: null,
         currentLevel: 1
     }
+    
     images = ["https://i.imgur.com/phYfxhw.png", "https://i.imgur.com/VwNC3Gx.png", "https://i.imgur.com/jbm413s.png"
         , "https://i.imgur.com/1a2gqd6.png", "https://i.imgur.com/HpHBuzr.png", "https://i.imgur.com/YGLWVBm.png", "https://i.imgur.com/O6G2qo5.png", "https://i.imgur.com/rC7N7BE.png",
         "https://i.imgur.com/BICPlMn.png", "https://i.imgur.com/4unvtif.png"];

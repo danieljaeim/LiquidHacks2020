@@ -1,10 +1,14 @@
 .champion-container {
+    background-color: #061C25;
     position: relative;
     display: inline-block;
-    width: 65%;
-    left: 16.5%;
+    width: 100%;
+    left: 0%;
     height: 100%;
-    border: 2px black solid;
+}
+
+.championlist-container {
+    background-color: #061C25;
 }
 
 .champ-header {
@@ -16,9 +20,15 @@
     top: 5%;
 }
 
+.champ-header img{
+    border: solid #FFD700 2px;
+    border-radius: 50%;
+}
+
 .champ-name {
     position: absolute;
     font-size: 2rem;
     font-weight: 900;
     padding: 10px 15px;
+    color: #FFD700;
 }
