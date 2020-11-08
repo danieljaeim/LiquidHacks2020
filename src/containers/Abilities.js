@@ -6,9 +6,6 @@ import '../css/Abilities.css';
 class Abilities extends React.Component {
     state = {}
 
-    
-
-
     // Reads an ability's effects and parses damage, and its type 
     // Returns a number for the ability, based on its level, and the champion's base stats + item stats
     /* KNOWN TYPES OF DAMAGE:
