@@ -30,8 +30,6 @@ class Abilities extends React.Component {
             return a[0]
         })
 
-        console.log(abilityArr)
-
         return (
             <>
                 {abilityArr.map(a => {

@@ -40,26 +40,47 @@ class App extends React.Component {
 
     /* Apply the item to the Champion's itemStats object */
 
-    if (!champObj.itemStats) {
-      champObj.itemStats = itemObj.stats;
-    } else {
-      let champItemStats = champObj.itemStats;
-      for (let stat of Object.keys(itemObj.stats)) {
-        let itemStatObj = itemObj.stats[stat];
-        for (let type of Object.keys(itemStatObj)) {
-          let val = itemStatObj[type];
-          champItemStats[stat][type] += val;
+    let combinedStats = itemObj.stats;
+    for (let p of itemObj.passives) {
+      let pStatsObj = p.stats;
+      for (let stat of Object.keys(pStatsObj)) {
+        let pStatObj = pStatsObj[stat];
+        for (let type of Object.keys(pStatObj)) {
+          let val = pStatObj[type];
+          if (val) {
+          }
+          combinedStats[stat][type] += val;
         }
       }
     }
 
+    console.log(combinedStats)
+
+    if (!champObj.itemStats) {
+      champObj.itemStats = combinedStats;
+      champItemList[emptySlot] = itemObj;
+      championList[champIndex] = champObj;
+      this.setState({ championList }, () => this.addChampionToList(championName, champObj.level))
+      return;
+    } 
+
+    let champItemStats = champObj.itemStats;
+    for (let stat of Object.keys(combinedStats)) {
+      let itemStatObj = combinedStats[stat];
+      for (let type of Object.keys(itemStatObj)) {
+        let val = itemStatObj[type];
+        champItemStats[stat][type] += val;
+      }
+    }
+
+    //iterate through item passives and do the same thing 
     champItemList[emptySlot] = itemObj;
     championList[champIndex] = champObj;
-    this.setState({ championList })
+    this.setState({ championList }, () => this.addChampionToList(championName, champObj.level))
   }
 
 
-  addChampionToList = (champName, level=1) => {
+  addChampionToList = (champName, level = 1) => {
     let newChampObject = this.scaleChampionByLevel(champName, level);
     let index = this.state.championList.findIndex(c => c.name == champName);
     if (index >= 0) {
@@ -70,50 +91,51 @@ class App extends React.Component {
     }
   }
 
-  /** Gets champion base stats from the json file and returns a copy of the champion with scaled stats, based on level. */
+  /** Gets champion base stats from the json file and returns a copy of the champion with scaled stats, based on level, and added with items*/
   scaleChampionByLevel = (champName, level) => {
+    champName = champName.split(' ').join('')
     let newChampObject = { ...champdata[champName] }
     let currentStats = {};
-    let relevantStats = ['health', 'healthRegen', 'mana', 'manaRegen', 
-    'armor', 'magicResistance', 'attackDamage', 'movespeed', 'attackSpeed', 'attackRange']
+    let relevantStats = ['health', 'healthRegen', 'mana', 'manaRegen',
+      'armor', 'magicResistance', 'attackDamage', 'movespeed', 'attackSpeed', 'attackRange']
     for (let key of Object.keys(newChampObject.stats)) {
       if (relevantStats.indexOf(key) < 0) continue;
       // have to account for attackspeed being a percentage increase of 0.02 not 2 (divide by 100)
       // we don't just increase stats by flat amount, we have to do it scaled by their formula
       // for percentages, we add up percentages from items and all sources, then apply the formula based on level
-      
       let base = newChampObject.stats[key].flat;
-      let growth = newChampObject.stats[key].perLevel; 
-      let finalFlat = base + growth * (level - 1) * (0.7025 + 0.0175 * (level - 1)); 
-
-      let champObj = this.state.championList[0];
-      if (champObj != null) {
-        if (champObj.itemState != null) {
-          if (champObj.itemStats[key] != null) {
-            let { flat, percent, perLevel, percentPerLevel, percentBase, percentBonus } = champObj.itemStats[key];
-            console.log(champObj.itemStats[key])
-  
-            if (key == 'attackSpeed') {
-              let finalpercent = percent + finalFlat;
-              // finalFlat = (base * (1 + finalpercent + 100)).toFixed(3);
-            }
-  
-            if (key == 'healthRegen') {
-              finalFlat /= 5;
-            }
-          }
-        }
-      }
-
+      let growth = newChampObject.stats[key].perLevel;
+      let finalFlat = base + growth * (level - 1) * (0.7025 + 0.0175 * (level - 1));
       currentStats[key.toLowerCase()] = finalFlat;
     }
+
+    let championItemsExists = this.state.championList[0];
+    if (championItemsExists) {
+      let itemStats = this.state.championList[0].itemStats;
+      console.log(itemStats)
+      if (itemStats != null) {
+        for (let stat of Object.keys(itemStats)) {
+          let { flat, percent, perLevel, percentPerLevel, percentBase, percentBonus } = itemStats[stat];
+
+          if (flat) {
+            console.log(stat.toLowerCase())
+            currentStats[stat.toLowerCase()] += flat;
+          }
+          
+          // if (percent) {
+          //   currentStats[stat.toLowerCase()] += percent;
+          // }
+        }
+      }
+    }
+
     currentStats.level = level;
     currentStats.lifesteal = currentStats.lifesteal ? currentStats.lifesteal : 0
     currentStats.abilitypower = currentStats.abilitypower ? currentStats.abilitypower : 0
     newChampObject.currentStats = currentStats;
     this.state.championList[0] != null ? newChampObject.items = this.state.championList[0].items : newChampObject.items = new Array(6).fill(null)
     newChampObject.itemStats = this.state.championList[0] != null ? this.state.championList[0].itemStats : null;
-    
+
     return newChampObject;
   }
 
@@ -141,6 +163,7 @@ class App extends React.Component {
                 <Items
                   itemdata={itemdata}
                   addItemToChampion={this.addItemToChampion}
+                  addChampionToList={this.addChampionToList}
                   {...c} />
               </Box>
             </Champion>
