@@ -9,7 +9,6 @@ class Searchbar extends React.Component {
     }
 
     componentDidMount = () => {
-        console.log(this.generateListOfChampNames())
         this.setState({ championOptions: this.generateListOfChampNames() })
     }
 
@@ -37,7 +36,6 @@ class Searchbar extends React.Component {
             return { key: key, value: key, image: {src: champdata[key].icon}, text: key }
         })
 
-        console.log(arr)
         return arr;
     }
 

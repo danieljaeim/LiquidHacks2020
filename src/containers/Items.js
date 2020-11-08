@@ -6,16 +6,16 @@ import { Dropdown } from 'semantic-ui-react';
 import '../css/Items.css';
 
 class Items extends React.Component {
-    state = { showItems: false }
+    state = { totalCost: 0 }
 
     handleDropdownChange = (event, data) => {
-        this.props.addItemToChampion(data.value)
+        this.props.addItemToChampion(this.props.name, data.value)
     }
 
     generateListOfItemNames = () => {
         let { itemdata } = this.props;
         let arr = Object.keys(itemdata).map(key => {
-            return { key: key, value: itemdata[key].name, image: { src: itemdata[key].icon }, text: itemdata[key].name }
+            return { key: key, value: key, image: { src: itemdata[key].icon }, text: itemdata[key].name }
         })
         return arr;
     }
@@ -37,15 +37,18 @@ class Items extends React.Component {
                         options={itemOptions}
                     />
                 </div>
-                {items.map(i => {
+                {items.map((i, ind) => {
                     return (
-                        <span className="itemslot"
-                            onClick={_ => console.log('adding item')}>
-                            {i ? <img src={i.icon}></img> :
-                                <span className="add-item-option">
-                                    <div style={{ textAlign: 'center' }}> Add Item </div>
-                                </span>
-                            }
+                        <span key={ind} className="itemslot" onClick={_ => console.log('adding item')}>
+                            <span className="add-item-option">
+                                {i ? 
+                                    <div className="item-active">
+                                        <img className="item-icon" src={i.icon}/>
+                                    </div> 
+                                    : 
+                                    <div className="item-deactive"> ITEM HERE </div>
+                                }
+                            </span>
                         </span>
                     )
                 })}
