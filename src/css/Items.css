@@ -1,8 +1,8 @@
 .items-container {
     position: absolute;
     display: flex;
-    width: 35%;
-    height: 35%;
+    width: 25%;
+    height: 18%;
     border: 1px black solid;
     bottom: 5%;
     right: 8%;
@@ -15,22 +15,20 @@
 
 .dropdown-items {
     position: absolute;
-    width: 75%;
-    top: -30%;
+    width: 100%;
+    top: -35%;
     left: 0;
 }
-
 
 /* ITEMS SLOT CSS */
 
 .itemslot {
     position: relative;
     height: 50%;
-    width: 33%;
-    border: 1px black solid;
+    width: 24%;
+    border: 1px whitesmoke solid;
 }
 
 .add-item-option {
-    position: relative;
     text-align: center;
 }

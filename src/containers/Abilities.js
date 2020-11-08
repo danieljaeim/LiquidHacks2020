@@ -21,7 +21,6 @@ class Abilities extends React.Component {
     */
     calculateAbilityBasedOnStats = () => {
         let { effects } = this.props.abilities;
-        console.log(effects)
     }
 
     render() {
