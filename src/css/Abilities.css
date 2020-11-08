@@ -2,12 +2,11 @@
     position: absolute;
     display: flex;
     width: auto;
-    right: 5%;
+    right: 10%;
     top: 5%;
     align-items: right;
     height: 100px;
     justify-content: row;
-    border: 1px black solid;
 }
 
 .ability-icon {
@@ -16,13 +15,14 @@
     object-fit: cover;
     height: 100%;
     box-sizing: border-box;
-    border: 1px gold solid;
+    border: 2px #FFD700 solid;
+    border-radius: 5%;
 }
 
 /* ABILITY FORMATTING ON HOVER */
 
 .ability-name {
-    color: white;
+    color: #FFD700;
     font-size: 1.5rem;
     width: auto;
 }
@@ -39,6 +39,8 @@
 /* TOOLTIP ON HOVER OVER ABILITY */
 
 .tooltip {
+    margin-top: 3%;
+    margin-right: 5%;
     position: relative;
     display: inline-block;
     width: 100%;
@@ -49,7 +51,7 @@
     visibility: hidden;
     top: 100px;
     width: 200px;
-    height: 150px;
+    height: 350px;
     background-color:black;
     opacity: 0.5;
     color: black;

@@ -36,7 +36,7 @@ class Abilities extends React.Component {
                         <div key={a.name} className="tooltip">
                             <span className="tooltiptext">
                                 <span className="ability-name">{ a.name }</span>
-                                <span className="ability-description"></span>
+                                <span className="ability-description">{a.effects[0].description}</span>
                             </span>
                             <img className="ability-icon" src={a.icon} />
                         </div>
